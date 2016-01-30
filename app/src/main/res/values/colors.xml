@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="recyclerViewBackgroundColor">#EDF1F7</color>
+    <color name="tabItemDefaultColor">#B1B3B1</color>
+    <color name="tabItemSelectedColor">#e36539</color>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AiR</string>
+    <string name="empty_rv_list">No items added to RV</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="my_rv_tab">RecyclerView</string>
+    <string name="my_lv_tab">ListView</string>
+
+</resources>
