@@ -3,7 +3,7 @@
     <string name="empty_rv_list">No items added to RV</string>
     <string name="please_wait">Please wait...</string>
     <string name="my_rv_tab">RecyclerView</string>
-    <string name="my_lv_tab">ListView</string>
+    <string name="my_lv_tab">Weather forcast</string>
 
 
 
@@ -23,5 +23,6 @@
     <string name="weather_drizzle">&#xf01c;</string>
 
     <string name="place_not_found">Sorry, no weather data found.</string>
+    <string name="add_item">Add item</string>
 
 </resources>

@@ -17,7 +17,7 @@ public class CityPreference {
     // If the user has not chosen a city yet, return
     // Moscow as the default city
     public String getCity(){
-        return prefs.getString("city", "Moscow");
+        return prefs.getString("city", "Varazdin");
     }
 
     public void setCity(String city){

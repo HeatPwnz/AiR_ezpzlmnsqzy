@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import butterknife.Bind;
 import co.infinum.heat.air.R;
 import co.infinum.heat.air.helpers.CityPreference;
 import co.infinum.heat.air.helpers.RemoteFetch;
@@ -25,14 +26,17 @@ import co.infinum.heat.air.helpers.RemoteFetch;
  * Created by hEAT- on 1.2.2016..
  */
 public class WeatherFragment extends Fragment {
+
+    @Bind(R.id.city_field)
+    TextView cityField;
+
     Typeface weatherFont;
 
-    TextView cityField;
+    //TextView cityField;
     TextView updatedField;
     TextView detailsField;
     TextView currentTemperatureField;
     TextView weatherIcon;
-    //TextView isprobavanje;
 
     Handler handler;
 
@@ -50,8 +54,6 @@ public class WeatherFragment extends Fragment {
         currentTemperatureField = (TextView)rootView.findViewById(R.id.current_temperature_field);
         weatherIcon = (TextView)rootView.findViewById(R.id.weather_icon);
 
-        //isprobavanje = (TextView)rootView.findViewById(R.id.proba123);
-
         weatherIcon.setTypeface(weatherFont);
         return rootView;
     }
@@ -60,7 +62,6 @@ public class WeatherFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/weather.ttf");
         weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "weather.ttf");
         updateWeatherData(new CityPreference(getActivity()).getCity());
     }
