@@ -1,11 +1,13 @@
 package co.infinum.heat.air;
 
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.util.Log;
@@ -28,23 +30,30 @@ import co.infinum.heat.air.adapters.ViewPagerAdapter;
 import co.infinum.heat.air.fragments.RecyclerViewFragment;
 import co.infinum.heat.air.fragments.WeatherFragment;
 import co.infinum.heat.air.helpers.CityPreference;
+import co.infinum.heat.air.helpers.OnItemAddedListener;
+import co.infinum.heat.air.mvp.interactors.DbInteractorImpl;
+import co.infinum.heat.air.mvp.presenters.DbPresenter;
+import co.infinum.heat.air.mvp.presenters.DbPresenterImpl;
 
 public class MainActivity extends BaseActivity implements TabLayout.OnTabSelectedListener{
 
+    public static final String TITLE = "Title";
+    public static final String MESSAGE = "Message";
     @Bind(R.id.tab_layout)
     TabLayout tabLayout;
 
     @Bind(R.id.viewPager)
     ViewPager pager;
+    private OnItemAddedListener listener;
 
     private ArrayList<Fragment> fragmentArrayList;
+    private WeatherFragment wf = new WeatherFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        FlowManager.init(this);
         /*
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -63,11 +72,15 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         pager.setCurrentItem(0);
     }
 
+    public void setListener(OnItemAddedListener listener){
+        this.listener = listener;
+    }
+
     public void initFragmentList(){
         fragmentArrayList = new ArrayList<>();
 
         fragmentArrayList.add(new RecyclerViewFragment());
-        fragmentArrayList.add(new WeatherFragment());
+        fragmentArrayList.add(wf);
     }
 
     public void initTabs(){
@@ -138,11 +151,8 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     }
 
     public void changeCity(String city){
-        WeatherFragment wf = (WeatherFragment)getSupportFragmentManager()
-                .findFragmentById(R.id.container);
-        WeatherFragment weatherFragment = new WeatherFragment();
         Log.i("--- CHANGE CITY ---", city);
-        weatherFragment.changeCity(city);
+        wf.changeCity(city);
         new CityPreference(this).setCity(city);
     }
 
@@ -166,6 +176,9 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
             public void onClick(DialogInterface dialog, int which) {
                 Log.i("--- ADD TITLE ---", title.getText().toString());
                 Log.i("--- ADD MESSAGE ---", message.getText().toString());
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString(TITLE, title.getText().toString()).apply();
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString(MESSAGE, message.getText().toString()).apply();
+                listener.itemAdded(title.getText().toString(), message.getText().toString());
             }
         });
         builder.show();

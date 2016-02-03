@@ -1,18 +1,9 @@
 package co.infinum.heat.air.db;
 
-import android.database.Cursor;
-import android.provider.ContactsContract;
-
 import com.raizlabs.android.dbflow.annotation.Column;
-import com.raizlabs.android.dbflow.annotation.NotNull;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
-import com.raizlabs.android.dbflow.sql.language.Insert;
-import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.BaseModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by hEAT- on 2.2.2016..
@@ -20,18 +11,19 @@ import java.util.List;
 @Table(database = ItemsDatabase.class)
 public class Items extends BaseModel {
 
-    void Items(String _title, String _message){
+    void Items(String _title, String _message) {
         this.title = _title;
         this.message = _message;
     }
 
     @PrimaryKey(autoincrement = true)
+    @Column
     private long id;
 
-    @Column(length = 15)
+    @Column
     private String title;
 
-    @Column()
+    @Column
     private String message;
     /*
     private void InsertItems(){
@@ -51,7 +43,7 @@ public class Items extends BaseModel {
         }
     }*/
 
-    public void insertWrapper(){
+    public void insertWrapper() {
         //Insert<Items> insert = SQLite.insert(Items.class).orFail().columnValues()
     }
 

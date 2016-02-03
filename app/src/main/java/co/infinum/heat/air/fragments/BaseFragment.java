@@ -1,10 +1,10 @@
 package co.infinum.heat.air.fragments;
 
-import com.afollestad.materialdialogs.AlertDialogWrapper;
-import com.afollestad.materialdialogs.MaterialDialog;
-
 import android.support.v4.app.Fragment;
 import android.text.Html;
+
+import com.afollestad.materialdialogs.AlertDialogWrapper;
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import co.infinum.heat.air.BaseActivity;
 import co.infinum.heat.air.R;

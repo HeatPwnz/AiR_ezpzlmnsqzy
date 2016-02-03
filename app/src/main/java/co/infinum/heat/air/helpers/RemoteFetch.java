@@ -1,7 +1,6 @@
 package co.infinum.heat.air.helpers;
 
 import android.content.Context;
-import android.util.Log;
 
 import org.json.JSONObject;
 
@@ -9,8 +8,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import co.infinum.heat.air.R;
 
 /**
  * Created by hEAT- on 1.2.2016..

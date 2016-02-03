@@ -5,16 +5,10 @@
     android:layout_height="match_parent"
     tools:context="co.infinum.heat.air.fragments.RecyclerViewFragment">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/rv_swipe_refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_recycler_view"
             style="@style/RecyclerViewStyle"/>
-
-    </android.support.v4.widget.SwipeRefreshLayout>
 
     <TextView
         android:id="@+id/empty_rv_info"
